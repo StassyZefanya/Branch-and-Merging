@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrasi</title>
+    <title>Tambah Produk</title>
+    <!-- Link Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
             --color-primary: #CEE6F2;   
@@ -17,31 +19,29 @@
             height: 100%;
             margin: 0;
             padding: 0;
+            font-family: 'Poppins', sans-serif;
         }
 
         body {
             background-color: var(--color-primary);
-            font-family: 'Poppins', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
         }
 
-        .register-container {
+        .container {
             width: 100%;
-            max-width: 400px;
+            max-width: 600px;
             padding: 30px;
             background-color: #ffffff;
             border-radius: 12px;
             box-shadow: 0 8px 16px rgba(150, 46, 42, 0.2);
-            transition: transform 0.3s;
-            border: 2px solid var(--color-accent1);
             position: relative;
             overflow: hidden;
         }
 
-        .register-container::before {
+        .container::before {
             content: '';
             position: absolute;
             top: -10px;
@@ -52,11 +52,6 @@
             z-index: -1;
             opacity: 0.2;
             border-radius: 15px;
-        }
-
-        .register-container:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 20px rgba(150, 46, 42, 0.3);
         }
 
         h1 {
@@ -85,15 +80,12 @@
             background-color: var(--color-accent1);
             border: none;
             transition: all 0.3s ease;
+            color: white;
         }
 
         .btn-primary:hover {
             background-color: var(--color-accent2);
             transform: scale(1.02);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
         }
 
         .text-muted {
@@ -106,9 +98,9 @@
             opacity: 0.8;
         }
 
-        
+       
         @media (max-width: 480px) {
-            .register-container {
+            .container {
                 margin: 20px;
                 width: calc(100% - 40px);
             }
@@ -116,30 +108,31 @@
     </style>
 </head>
 <body>
-    <div class="register-container">
-        <h1>Registrasi</h1>
-        <form action="./backend/register.php" method="post">
-            <div class="form-group">
-                <input type="text" name="name" class="form-control" placeholder="Masukkan nama Anda" required>
+    <div class="container">
+        <h1>Tambah Produk</h1>
+        <div class="text-center mb-4">
+            <a href="show.php" class="btn btn-primary">Lihat Data Produk</a>
+        </div>
+        <form action="./backend/create.php" method="post" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="name" class="form-label">Nama Produk</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Input nama produk" required>
             </div>
-            <div class="form-group">
-                <input type="email" name="email" class="form-control" placeholder="Masukkan email Anda" required>
+            <div class="mb-3">
+                <label for="price" class="form-label">Harga Produk</label>
+                <input type="number" class="form-control" id="price" name="price" placeholder="Input harga produk" required>
             </div>
-            <div class="form-group">
-                <input type="password" name="password" class="form-control" placeholder="Masukkan password Anda" required>
+            <div class="mb-3">
+                <label for="image" class="form-label">Upload Gambar</label>
+                <input class="form-control" type="file" id="image" name="image" required>
             </div>
-            <div class="form-group">
-                <input type="password" name ="confirm" class="form-control" placeholder="Masukkan konfirmasi password Anda" required>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Daftar" name="submit" class="btn btn-primary">
+            <div class="text-center">
+                <input type="submit" class="btn btn-primary" value="Simpan" name="submit">
             </div>
         </form>
-        <div class="text-center mt-3">
-            <p>Sudah punya akun? <a href="index.php" class="text-muted">Login disini</a></p>
-        </div>
     </div>
 
+    <!-- Link Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
 </body>
